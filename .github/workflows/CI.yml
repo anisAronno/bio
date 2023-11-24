@@ -1,0 +1,43 @@
+name: Deploy Vue.js App to FTP
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Vue.js app
+        run: npm run build
+
+      # Delete all files and directories except dist
+      - name: Exclude root directory files
+        run: |
+          ls | grep -v 'dist' | xargs rm -rf
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.3
+        with:
+          server: ${{ secrets.SERVER }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          protocol: ftps
+          port: 21
+          local-dir: ./dist/
+          exclude: |
+            .git*
+            /node_modules/
