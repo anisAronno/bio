@@ -24,7 +24,6 @@ jobs:
       - name: Build Vue.js app
         run: npm run build
 
-      # Delete all files and directories except dist
       - name: Exclude root directory files
         run: |
           ls | grep -v 'dist' | xargs rm -rf

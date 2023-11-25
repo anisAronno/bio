@@ -1,83 +1,40 @@
-<script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-</script>
-
 <template>
-  <header>
-    <div class="wrapper">
-      <HelloWorld msg="Hi, I am Anichur Rahaman" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <div>
+    <div
+      class="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden bg-gray-900 opacity-75 flex flex-col items-center justify-center"
+      v-if="!isLoaded"
+    >
+      <span class="w-10 h-10">
+        <Loader></Loader>
+      </span>
     </div>
-  </header>
-
-  <RouterView />
+    <router-view @loaded="loaded" @back="back" @toaster="toaster" class="font-sans"></router-view>
+  </div>
 </template>
 
-<style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+<script setup>
+import Loader from '@/components/Loader.vue'
+import { inject, ref } from 'vue'
+import { useRouter } from 'vue-router'
+
+const swal = inject('$swal')
+
+const isLoaded = ref(false)
+const router = useRouter()
+function loaded(data = true) {
+  isLoaded.value = data
 }
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+function back() {
+  router.back()
 }
 
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+function toaster(title = '', message = '', footer = '') {
+  loaded()
+  swal.fire({
+    title: title,
+    text: message,
+    footer: footer
+  })
 }
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
-}
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
-  }
-}
-</style>
+</script>
