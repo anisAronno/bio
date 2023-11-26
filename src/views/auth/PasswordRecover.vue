@@ -1,5 +1,5 @@
 <template>
-  <div class="grid h-screen place-items-center dark:bg-gray-900">
+  <div class="grid place-items-center dark:bg-gray-900">
     <div class="card max-w-sm">
       <div class="w-full grid h-full place-items-center">
         <User class="avatar p-3 w-32"></User>
@@ -14,7 +14,7 @@
             id="email"
             class="form-controll"
             placeholder="name@company.com"
-            v-model="forgetPasswordForm.email"
+            v-model="passwordRecoverForm.email"
             :class="{ '!border-2 !border-rose-500': err?.email }"
           />
           <div class="text-red-500" v-if="err?.email">
@@ -40,15 +40,15 @@
 <script setup>
 import useVuelidate from '@vuelidate/core'
 import { onMounted, onUnmounted } from 'vue'
-import ButtonSpiner from '../components/ButtonSpiner.vue'
-import User from '../components/User.vue'
-import { processError, processForgetPasssword, useAuth } from '../composables/useAuth'
-import { forgetPasswordRules } from '../validation/rules/passwordRecoverRules'
+import ButtonSpiner from '../../components/ButtonSpiner.vue'
+import User from '@/components/User.vue'
+import { processError, processPasswordRecover, useAuth } from '../../composables/useAuth'
+import { passwordRecoverRules } from '../../validation/rules/passwordRecoverRules'
 
 const emit = defineEmits(['loaded', 'toaster'])
-const { err, isSaved, forgetPasswordForm } = useAuth()
+const { err, isSaved, passwordRecoverForm } = useAuth()
 
-let v$ = useVuelidate(forgetPasswordRules, forgetPasswordForm)
+let v$ = useVuelidate(passwordRecoverRules, passwordRecoverForm)
 
 const submitForm = async () => {
   let isValidate = await v$.value.$validate()
@@ -58,7 +58,7 @@ const submitForm = async () => {
   }
   try {
     isSaved.value = true
-    await processForgetPasssword(forgetPasswordForm)
+    await processPasswordRecover(passwordRecoverForm)
       .then((response) => {
         emit('toaster', response?.data?.message)
         isSaved.value = false

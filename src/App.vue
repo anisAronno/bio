@@ -8,7 +8,14 @@
         <Loader></Loader>
       </span>
     </div>
-    <router-view @loaded="loaded" @back="back" @toaster="toaster" class="font-sans"></router-view>
+    <router-view
+      v-on="{
+        loaded: loaded,
+        back: back,
+        toaster: toaster
+      }"
+      class="font-sans"
+    ></router-view>
   </div>
 </template>
 

@@ -1,0 +1,39 @@
+<template>
+  <svg
+    version="1.0"
+    xmlns="http://www.w3.org/2000/svg"
+    width="512.000000pt"
+    height="512.000000pt"
+    viewBox="0 0 512.000000 512.000000"
+    preserveAspectRatio="xMidYMid meet"
+    class="custom-svg-icon"
+    style="fill: none"
+  >
+    <g
+      transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
+      fill="currentColor"
+      stroke="none"
+    >
+      <path
+        d="M1050 4055 l0 -215 1705 0 1705 0 0 215 0 215 -1705 0 -1705 0 0
+-215z"
+      />
+      <path
+        d="M1503 2997 c-354 -226 -643 -414 -643 -417 1 -3 291 -195 645 -427
+l645 -422 0 840 c0 461 -1 839 -2 838 -2 0 -292 -186 -645 -412z"
+      />
+      <path d="M2880 3050 l0 -210 790 0 790 0 0 210 0 210 -790 0 -790 0 0 -210z" />
+      <path d="M2880 2070 l0 -210 790 0 790 0 0 210 0 210 -790 0 -790 0 0 -210z" />
+      <path
+        d="M1050 1065 l0 -215 1705 0 1705 0 0 215 0 215 -1705 0 -1705 0 0
+-215z"
+      />
+    </g>
+  </svg>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style></style>

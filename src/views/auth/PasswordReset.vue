@@ -1,5 +1,5 @@
 <template>
-  <div class="grid h-screen place-items-center dark:bg-gray-900">
+  <div class="grid place-items-center dark:bg-gray-900">
     <div class="card max-w-md">
       <div class="w-full grid h-full place-items-center">
         <User class="avatar p-3 w-32"></User>

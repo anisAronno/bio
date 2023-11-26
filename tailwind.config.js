@@ -1,7 +1,11 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: 'class', 
-    purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+    purge: [
+        './index.html', 
+        './src/**/*.{vue,js,ts,jsx,tsx}',         
+        "./node_modules/flowbite/**/*.js"
+    ],
     theme: {
         extend: {
             fontFamily: {
@@ -23,5 +27,8 @@ module.exports = {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        require('flowbite/plugin')
+    ]
+
 }

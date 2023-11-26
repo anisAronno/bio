@@ -1,5 +1,5 @@
 <template>
-  <div class="grid min-h-screen max-h-full place-items-center dark:bg-gray-900">
+  <div class="grid place-items-center dark:bg-gray-900">
     <div class="card max-w-md">
       <div class="w-full grid h-full place-items-center">
         <User class="avatar p-3 w-32"></User>
@@ -73,13 +73,13 @@
 
 <script setup>
 import ButtonSpiner from '@/components/ButtonSpiner.vue'
-import User from '@/components/User.vue'
 import { processError, processLogin, useAuth } from '@/composables/useAuth'
 import { loginRules } from '@/validation/rules/loginRules'
 import useVuelidate from '@vuelidate/core'
 import { onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useStore } from 'vuex'
+import User from '@/components/User.vue'
 
 const { loginForm, err, isSaved } = useAuth()
 const router = useRouter()

@@ -5,12 +5,17 @@ const store = createStore({
   state() {
     return {
       isAuthenticated: !!localStorage.getItem('token'),
-      user: JSON.parse(localStorage.getItem('user'))
+      user: JSON.parse(localStorage.getItem('user')),
+      sidebarOpen: !!localStorage.getItem('sidebarOpen')
     }
   },
   getters: {
     isAuthenticated(state) {
       return state.isAuthenticated
+    },
+
+    sidebarOpen(state) {
+      return state.sidebarOpen
     },
 
     user(state) {
@@ -24,7 +29,6 @@ const store = createStore({
 
   mutations: {
     authenticate(state, payload) {
-        console.log(payload);
       state.isAuthenticated = true
       localStorage.setItem('token', payload.token)
 
@@ -39,6 +43,11 @@ const store = createStore({
       }
 
       localStorage.setItem('user', JSON.stringify(state.user))
+    },
+
+    sidebarOpen(state, payload) {
+      state.sidebarOpen = true
+      localStorage.setItem('sidebarOpen', payload)
     },
 
     logout(state) {
@@ -65,6 +74,10 @@ const store = createStore({
   actions: {
     login(context, payload) {
       context.commit('authenticate', payload)
+    },
+
+    sidebarOpen(context, payload) {
+      context.commit('authenticate', !payload)
     },
 
     logout(context) {

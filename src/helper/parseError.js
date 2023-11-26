@@ -1,5 +1,5 @@
 function parseError(error) {
-   if (error?.value?.$error) {
+  if (error?.value?.$error) {
     let frontendEror = error.value?.$errors
     return frontendEror.reduce((a, v) => ({ ...a, [v['$propertyPath']]: [v['$message']] }), {})
   }
