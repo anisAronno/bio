@@ -45,7 +45,7 @@ const navigations = [
 <template>
   <aside
     id="default-sidebar"
-    class="fixed top-0 left-0 z-40 w-48 md:w-64 2xl:w-80 h-screen sm:translate-x-0 border-r-2 border-gray-50 dark:border-gray-800"
+    class="fixed top-0 left-0 z-40 w-48 md:w-64 2xl:w-80 h-screen sm:translate-x-0 border-r-2 border-[#f2f9f9] dark:border-[#191616] shadow-sm"
     aria-label="Sidebar"
   >
     <div class="relative transition-transform sm:-translate-x-full translate-x-0">
@@ -53,7 +53,7 @@ const navigations = [
         type="button"
         data-drawer-hide="drawer-navigation"
         aria-controls="drawer-navigation"
-        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+        class="text-gray-400 bg-transparent hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center dark:hover:text-white"
         @click="$emit('closeSidebar')"
       >
         <svg
@@ -88,9 +88,9 @@ const navigations = [
           <li v-for="navigation in navigations" :key="navigation.route">
             <router-link
               :to="{ name: navigation.route }"
-              class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700 group"
+              class="flex items-center p-2 text-gray-900 dark:text-white group"
               :class="{
-                ' text-gray-900 rounded bg-gray-100 dark:bg-gray-800 md:text-gray-900  md:dark:text-800-500':
+                'text-gray-900 bg-blue-700  md:bg-transparent md:text-blue-700 md:dark:text-blue-500 underline underline-offset-4 border-blue-600 dark:border-blue-600 ':
                   $route.name == navigation.route
               }"
             >

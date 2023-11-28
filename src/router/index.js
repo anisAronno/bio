@@ -21,38 +21,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import { dashboard } from "./admin";
 
 const routes = [
-  {
-    path: '/login',
-    name: 'login',
-    component: Login,
-    meta: {
-      guestOnly: true
-    }
-  },
-  {
-    path: '/password-recover',
-    name: 'passwordRecover',
-    component: PasswordRecover,
-    meta: {
-      guestOnly: true
-    }
-  },
-  {
-    path: '/password-reset',
-    name: 'passwordReset',
-    component: PasswordReset,
-    meta: {
-      guestOnly: true
-    }
-  },
-  {
-    path: '/signup',
-    name: 'signup',
-    component: Signup,
-    meta: {
-      guestOnly: true
-    }
-  },
+ 
   {
     path: '/',
     component: FrontendLayout,
@@ -108,6 +77,38 @@ const routes = [
             name: 'contact',
             component: Contact, 
         },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login,
+            meta: {
+              guestOnly: true
+            }
+          },
+          {
+            path: '/password-recover',
+            name: 'passwordRecover',
+            component: PasswordRecover,
+            meta: {
+              guestOnly: true
+            }
+          },
+          {
+            path: '/password-reset',
+            name: 'passwordReset',
+            component: PasswordReset,
+            meta: {
+              guestOnly: true
+            }
+          },
+          {
+            path: '/signup',
+            name: 'signup',
+            component: Signup,
+            meta: {
+              guestOnly: true
+            }
+          },
     ]
   },
   dashboard,

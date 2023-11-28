@@ -23,7 +23,7 @@ const navOpen = ref(false)
 </script>
 <template>
   <nav
-    class="bg-white dark:bg-gray-900 fixed z-20 top-0 left-0 right-0 md:left-64 2xl:left-80 border-b border-gray-100 dark:border-gray-800"
+    class="bg-white dark:bg-gray-900 fixed z-20 top-0 left-0 right-0 md:left-64 2xl:left-80 shadow-sm"
   >
     <div class="flex flex-wrap items-center justify-between mx-auto p-4 md:justify-end md:gap-10">
       <router-link
@@ -84,7 +84,7 @@ const navOpen = ref(false)
               :to="{ name: navigation.route }"
               class="py-2 px-3 text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent text-md 2xl:text-lg flex gap-1 items-center"
               :class="{
-                ' py-2 px-3 text-gray-900 bg-blue-700  md:bg-transparent md:text-blue-700 md:p-0 md:pb-1 md:dark:text-blue-500  border-b-2   border-blue-600 dark:border-blue-600 ':
+                ' py-2 px-3 text-gray-900 bg-blue-700  md:bg-transparent md:text-blue-700 md:p-0 md:pb-1 md:dark:text-blue-500  border-b-2 border-blue-600 dark:border-blue-600 ':
                   $route.name == navigation.route
               }"
               aria-current="page"
